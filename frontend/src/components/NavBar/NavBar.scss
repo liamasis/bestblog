@@ -12,7 +12,39 @@
     margin-right: 20px;  
 }
 
-.menu_wrapper{
-    display: flex;
+.logo {
+    font-size: 30px;
+    font-weight: 400;
+    font-family: Helvetica, sans-serif
 }
 
+.menu_wrapper{
+    display: flex;
+    gap: 2rem;
+}
+
+ul {
+    list-style-type: none
+}
+
+.nav_link {
+    text-transform: uppercase;
+    font-family: Helvetica, sans-serif;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.button_holder {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+    
+}
+
+button {
+    background: linear-gradient(140deg, rgba(86,128,181,0.6951155462184874) 0%, rgba(0,212,255,1) 100%);
+    padding: 5px 20px;
+    border: 1px;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
