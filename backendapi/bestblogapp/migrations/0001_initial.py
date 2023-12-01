@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
                 ('descripts', models.TextField()),
                 ('image', models.ImageField(upload_to='images/')),
                 ('date_added', models.DateTimeField(auto_now_add=True)),
-                ('category', models.ManyToManyField(to='bestbloadapp.category')),
+                ('category', models.ManyToManyField(to='bestblogapp.category')),
                 ('owner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],
         ),
