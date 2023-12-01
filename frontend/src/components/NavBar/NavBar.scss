@@ -15,7 +15,9 @@
 .logo {
     font-size: 30px;
     font-weight: 400;
-    font-family: Helvetica, sans-serif
+    font-family: Helvetica, sans-serif;
+    text-decoration: none;
+    text-decoration-color: black;
 }
 
 .menu_wrapper{
@@ -46,5 +48,14 @@ button {
     padding: 5px 20px;
     border: 1px;
     border-radius: 5px;
+    
     text-transform: uppercase;
+
+    cursor: pointer;
+}
+
+Link {
+    &:focus, &:hover, &:visited, &:link, &:active {
+        text-decoration: none;
+    }
 }

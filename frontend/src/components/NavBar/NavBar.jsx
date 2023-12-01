@@ -1,12 +1,17 @@
 import React from 'react'
 import './NavBar.scss'; 
+import { Link } from 'react-router-dom';
+
 export const NavBar = () => {
   return (
     <div className="top_section">
       <nav className='nav_wrapper'>
-        <div className='logo'>
-            BEST
-        </div>
+        <Link to='/' style={{ textDecoration: 'none' }}>
+          <h1 className='logo'>
+              BEST
+          </h1>
+        </Link>
+        
 
         <div>
           <ul className='menu_wrapper'>
@@ -21,8 +26,9 @@ export const NavBar = () => {
         </div>
         <div>
           <div className="button_holder">
-            <button>Login</button>
-            <button>Register</button>
+            <Link to='login/'><button>Login</button></Link>
+            <Link to='register/'><button>Register</button></Link>
+            
           </div>
         </div>
       </nav>

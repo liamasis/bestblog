@@ -1,0 +1,25 @@
+.container {
+    margin: auto;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.main_page {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4rem;
+}
+
+.first_column {
+    grid-column: span 2 / span 2;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    padding: 2rem;
+
+    text-align: center;
+}
+
+.second_column {
+    grid-column: span 1 / span 1;
+    text-align: center;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
