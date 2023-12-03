@@ -10,28 +10,28 @@ export const SidePanel = () => {
         <div className="">
           <div className="">
             <p>
-              First thing
+              Write Post
             </p>
           </div>
         </div>
         <div className="">
           <div className="">
             <p>
-              First thing
+              Edit Post
             </p>
           </div>
         </div>
         <div className="">
           <div className="">
             <p>
-              First thing
+              Search
             </p>
           </div>
         </div>
         <div className="">
           <div className="">
             <p>
-              First thing
+              View Source Code
             </p>
           </div>
         </div>
