@@ -21,7 +21,7 @@ export function Counter() {
         <div>
             <div>
                 <button aria-label='Decrement value' onClick={() => dispatch(decrement())}>
-                    Decrement value
+                    Decrement
                 </button>
                 <span>{count}</span>
                 <button aria-label='increment' onClick={() => dispatch(increment())}>
@@ -29,10 +29,10 @@ export function Counter() {
                 </button>
                 <input type="value" onChange={e => setIncrementAmount(e.target.value)} />
                 <button onClick={() => dispatch(incrementByAmount(Number(incrementAmount) || 0))}>
-                    Increment by thing
+                    Increment by amount
                 </button>
                 <button onClick={() => dispatch(incrementAsync(incrementValue))}>
-
+                    Async increment by amount
                 </button>
             </div>
         </div>

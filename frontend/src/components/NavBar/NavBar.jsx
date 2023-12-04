@@ -11,16 +11,14 @@ export const NavBar = () => {
               BEST
           </h1>
         </Link>
-        
-
         <div>
           <ul className='menu_wrapper'>
             <li className='nav_link'>All</li>
-            <li className='nav_link'>Technology</li>
             <li className='nav_link'>Food</li>
             <li className='nav_link'>Hostels</li>
-            <li className='nav_link'>Climate</li>
-            <li className='nav_link'>Sites</li>
+            <li className='nav_link'>Tourist Sites</li>
+            <li className='nav_link'>Night life</li>
+            <li className='nav_link'>Art</li>
             <li className='nav_link'>Underground</li>
           </ul>
         </div>
@@ -28,12 +26,9 @@ export const NavBar = () => {
           <div className="button_holder">
             <Link to='login/'><button>Login</button></Link>
             <Link to='register/'><button>Register</button></Link>
-            
           </div>
         </div>
       </nav>
-      
-
     </div>
   )
 }
