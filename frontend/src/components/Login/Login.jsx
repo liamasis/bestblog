@@ -1,8 +1,10 @@
 import React from 'react'
-
+import Counter from '../../features/Counter.jsx'
 const Login = () => {
   return (
-    <div>Login</div>
+    <div>
+        <Counter />
+    </div>
   )
 }
 export default Login

@@ -8,6 +8,8 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import './App.scss';
+import { Provider } from 'react-redux'
+import store from './store'
 
 import {
   BrowserRouter as Router,
@@ -18,8 +20,8 @@ import {
 function App() {
 
   return (
-  
-      <div className="">
+    <>
+      <Provider store={store}>
         <Router>
           <NavBar />
             <Routes>
@@ -28,8 +30,8 @@ function App() {
               <Route path='/register' element={<Register />}/>
           </Routes>
         </Router>
-      </div>
-  
+      </Provider>
+    </>
   )
 }
 
