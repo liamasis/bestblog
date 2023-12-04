@@ -1,2 +1,1 @@
-# bestblog
-Blog to keep my ideas in
+This is a blog to record cheap travel ideas, it is a place to throw things down so that your other people can see things to do in the area.
