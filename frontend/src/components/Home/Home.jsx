@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react'
 import { SidePanel } from '../SidePanel/SidePanel'
 import './Home.scss'; 
-import { getPostsError, getPostsStatus, selectAllPosts } from '../../features/blogger/blogger';
-import { useSelector, useDispatch } from 'react-redux';
+import { getPostsError, getPostsStatus, selectAllPosts, fetchPosts } from '../../features/blogger/blogger';
+import { useSelector, useDispatch, connect } from 'react-redux';
 
 
 
@@ -10,21 +10,39 @@ const Home = () => {
 
   const dispatch = useDispatch()
 
-  const post = useSelector(selectAllPosts)
+  const posts = useSelector(selectAllPosts)
   const getPostStatus = useSelector(getPostsStatus)
   const getPostError = useSelector(getPostsError)
   const errors = useSelector(getPostsError)
 
-  
-  useEffect(() => {
 
-  }, [dispatch])
+  useEffect(() => {
+    if (getPostStatus === 'idle') {
+      dispatch(fetchPosts())
+    } 
+  }, [dispatch, getPostStatus])
+
+  let content
+  if(getPostStatus === 'loading') {
+    content = <div className='content'>
+      Loading...
+    </div>
+  } else if (getPostStatus === 'succeeded') {
+    content = posts.map((post) => 
+      <BlogExcerpt key={post.id} postId={post.id} post={post} />
+    )
+  } else if (getPostStatus === 'failed') {
+    content = <div className='content'>
+      failed {getPostError}
+    </div>
+  }
+
 
   return (
     <div className='container'>
         <div className="main_page">
             <div className="first_column">
-                <div>Home</div>
+                <div>{content}</div>
             </div>
             <div className="second_column">
                 <SidePanel/>

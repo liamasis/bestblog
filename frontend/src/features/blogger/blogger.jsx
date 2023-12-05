@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-const apiURL = "http://127.0.0.1:8000/"
+const apiURL = "http://127.0.0.1:8000"
 
 const initialState = {
     posts: [],
@@ -12,6 +12,7 @@ const initialState = {
 
 export const fetchPosts = createAsyncThunk("posts/fetchPosts", async () => {
     const response = await axios.get(apiURL)
+    console.log(response.data)
     return response.data
 })
 
@@ -20,24 +21,24 @@ export const postSlice = createSlice({
     initialState,
     reducers: {
         setCategoryFilter: (state, action) => {
+            console.log(action)
             state.categoryFilter = action.payload
         },
     },
-
-    extraReducers(builder) {
-        builder
-        .addCase(fetchPosts.pending, (state, action) => {
+    extraReducers: (builder) => {
+        builder.addCase(fetchPosts.pending, (state, action) => {
+            console.log(action)
             state.status = 'loading'
-        })
-        .addCase(fetchPosts.fulfilled, (state, action) => {
+        }).addCase(fetchPosts.fulfilled, (state, action) => {
+            console.log(action)
             state.status = 'succeeded'
             state.posts = action.payload
-        })
-        .addCase(fetchPosts.rejected, (state, action) => {
+        }).addCase(fetchPosts.rejected, (state, action) => {
             state.status = 'failed'
+            console.log(action)
             state.error = action.error.message
         })
-    }
+    },
 })
 
 export const { setCategoryFilter } = postSlice.actions
