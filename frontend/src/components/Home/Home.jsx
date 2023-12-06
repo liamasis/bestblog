@@ -3,7 +3,7 @@ import { SidePanel } from '../SidePanel/SidePanel'
 import './Home.scss'; 
 import { getPostsError, getPostsStatus, selectAllPosts, fetchPosts } from '../../features/blogger/blogger';
 import { useSelector, useDispatch, connect } from 'react-redux';
-
+import BlogExcerpt from '../../features/blogger/BlogExcerpt'
 
 
 const Home = () => {
@@ -29,7 +29,7 @@ const Home = () => {
     </div>
   } else if (getPostStatus === 'succeeded') {
     content = posts.map((post) => 
-      <BlogExcerpt key={post.id} postId={post.id} post={post} />
+      <BlogExcerpt key={post.id} postID={post.id} post={post}/>
     )
   } else if (getPostStatus === 'failed') {
     content = <div className='content'>

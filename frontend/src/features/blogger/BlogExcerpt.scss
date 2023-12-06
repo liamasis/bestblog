@@ -1,0 +1,34 @@
+.blog-image {
+    object-fit: contain;
+    border-radius: 5px;
+}
+
+.blog-text {
+    text-align: center;
+}
+
+.blog {
+    display: flex-column;
+    justify-content: space-between;
+}
+
+.blog-container {
+    width: 20rem;
+}
+
+.blog-post-date {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stamp {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.svg_icons {
+    transform: scale(0.9);
+    padding: 3px;
+}
