@@ -1,6 +1,7 @@
 import React from 'react'
 import './BlogExcerpt.scss'; 
 const apiurl = 'http://127.0.0.1:8000/'
+import { Link } from "react-router-dom";
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
 
 export const BlogExcerpt = ({postID, post}) => {
@@ -40,6 +41,11 @@ export const BlogExcerpt = ({postID, post}) => {
                         <p>
                             {post.descripts.substring(0,100)}...
                         </p>
+                        <div className="button_container">
+                            <Link to={`blog/${postID}`}>
+                                <button>read more</button>
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>

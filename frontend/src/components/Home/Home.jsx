@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react'
 import { SidePanel } from '../SidePanel/SidePanel'
+import { BlogPost } from '../BlogPost/BlogPost'
 import './Home.scss'; 
-import { getPostsError, getPostsStatus, selectAllPosts, fetchPosts } from '../../features/blogger/blogger';
+import { getPostsError, getPostsStatus, selectAllPosts, fetchPosts } from '../../features/blogger/bloggerSlice';
 import { useSelector, useDispatch, connect } from 'react-redux';
 import BlogExcerpt from '../../features/blogger/BlogExcerpt'
 
@@ -42,7 +43,9 @@ const Home = () => {
     <div className='container'>
         <div className="main_page">
             <div className="first_column">
-                <div>{content}</div>
+                <div className="blog_container">
+                    {content}
+                  </div>
             </div>
             <div className="second_column">
                 <SidePanel/>

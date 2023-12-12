@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import postsReducer from './features/blogger/blogger'
+import postsReducer from './features/blogger/bloggerSlice'
 
 //import counterReducer from './features/counter/counterSlice'
 
