@@ -1,10 +1,10 @@
 import axios from 'axios'
 import { createAsyncThunk, createSlice, isFulfilled } from '@reduxjs/toolkit'
 
-const apiURL = "http://127.0.0.1:8000/blog"
+const apiURL = "http://127.0.0.1:8000/blog/"
 
 const initialState = {
-    posts: [],
+    post: [],
     status: "idle",
     error: null,
 }
@@ -12,7 +12,8 @@ const initialState = {
 export const fetchPostById = createAsyncThunk(
     'post/fetchPostById',
     async (postID) => {
-        const response = axios.get(`${apiURL}${postID}`)
+        const response = await axios.get(`${apiURL}${postID.id}`)
+        console.log(response.data)
         return response.data
     }
 )
@@ -40,4 +41,4 @@ export const selectPost = (state) => state.post.post
 export const getPostStatus = (state) => state.post.status
 export const getPostError = (state) => state.post.error
 
-export default blogSlice
+export default postSlice.reducer

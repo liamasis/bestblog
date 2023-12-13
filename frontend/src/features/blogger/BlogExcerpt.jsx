@@ -1,8 +1,9 @@
 import React from 'react'
 import './BlogExcerpt.scss'; 
-const apiurl = 'http://127.0.0.1:8000/'
 import { Link } from "react-router-dom";
 import AccessTimeIcon from '@mui/icons-material/AccessTime'
+
+const apiurl = 'http://127.0.0.1:8000/'
 
 export const BlogExcerpt = ({postID, post}) => {
 
