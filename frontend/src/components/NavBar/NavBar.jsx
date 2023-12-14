@@ -1,8 +1,35 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './NavBar.scss'; 
 import { Link } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setCategoryFilter } from '../../features/blogger/bloggerSlice';
+import { fetchCategories, selectAllCategories } from '../../features/categories/categorySlice';
+
 
 export const NavBar = () => {
+  
+  const dispatch = useDispatch()
+
+  const categories = useSelector(selectAllCategories)
+  
+
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [dispatch])
+
+  const handleCategoryClick = ((category) => {
+    if (category === 'all') {
+      dispatch(setCategoryFilter())
+    } else {
+      dispatch(setCategoryFilter(category))
+    }
+  })
+
+  let nav_items
+  nav_items = categories.map((category) =>  
+    <li key={category.id} className='nav_link' onClick={() => handleCategoryClick(`${category.name}`)}>{category.name}</li>
+  )
+  console.log(nav_items)
   return (
     <div className="top_section">
       <nav className='nav_wrapper'>
@@ -13,13 +40,11 @@ export const NavBar = () => {
         </Link>
         <div>
           <ul className='menu_wrapper'>
-            <li className='nav_link'>All</li>
-            <li className='nav_link'>Food</li>
-            <li className='nav_link'>Hostels</li>
-            <li className='nav_link'>Tourist Sites</li>
-            <li className='nav_link'>Night life</li>
-            <li className='nav_link'>Art</li>
-            <li className='nav_link'>Underground</li>
+            
+            
+            <li className='nav_link' onClick={() => handleCategoryClick('all')}>all</li>
+            {nav_items}
+            
           </ul>
         </div>
         <div>

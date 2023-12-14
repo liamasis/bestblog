@@ -3,7 +3,7 @@ import './BlogPost.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPostById, getPostError, getPostStatus, selectPost } from '../../features/blogger/blogSlice';
 import { useParams } from 'react-router-dom';
-import {SingleBlogExcerpt} from '../../features/blogger/SingleBlogExcerpt'
+import { SingleBlogExcerpt } from '../../features/blogger/SingleBlogExcerpt'
 import { SidePanel } from '../../components/SidePanel/SidePanel'
 
 export const BlogPost = () => {
@@ -12,6 +12,7 @@ export const BlogPost = () => {
 
   const post = useSelector(selectPost)
   const postStatus = useSelector(getPostStatus)
+  const postError = useSelector(getPostError)
   
 
   const postID = useParams()
@@ -27,6 +28,7 @@ export const BlogPost = () => {
   } else if (postStatus == 'succeeded') {
     content = <SingleBlogExcerpt key={post.id} postID={post.id} post={post}/>
   }
+  
   return (
     <div className='post_container'>
         <div className="first_column">

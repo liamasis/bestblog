@@ -2,20 +2,29 @@ import React, { useEffect } from 'react'
 import { SidePanel } from '../SidePanel/SidePanel'
 import { BlogPost } from '../BlogPost/BlogPost'
 import './Home.scss'; 
-import { getPostsError, getPostsStatus, selectAllPosts, fetchPosts } from '../../features/blogger/bloggerSlice';
+import { selectCategoryFilter, getPostsError, getPostsStatus, selectAllPosts, fetchPosts } from '../../features/blogger/bloggerSlice';
 import { useSelector, useDispatch, connect } from 'react-redux';
 import BlogExcerpt from '../../features/blogger/BlogExcerpt'
+import { fetchCategories, selectAllCategories } from '../../features/categories/categorySlice';
 
 
 const Home = () => {
 
-  const dispatch = useDispatch()
-
+  
   const posts = useSelector(selectAllPosts)
   const getPostStatus = useSelector(getPostsStatus)
   const getPostError = useSelector(getPostsError)
   const errors = useSelector(getPostsError)
+  
+  const categoryFilter = useSelector(selectCategoryFilter)
+  
+  const categories = useSelector(selectAllCategories)
+  
+  const dispatch = useDispatch()
 
+  useEffect(() => {
+    dispatch(fetchCategories())
+  }, [dispatch])
 
   useEffect(() => {
     if (getPostStatus === 'idle') {
@@ -23,13 +32,17 @@ const Home = () => {
     } 
   }, [dispatch, getPostStatus])
 
+  console.log(categoryFilter)
+  const filteredPosts = categoryFilter ? posts.filter((post) => post.category.some((categoryId) => categories.find((category) => category.id === categoryId)?.name === categoryFilter)) : posts
+ 
   let content
+
   if(getPostStatus === 'loading') {
     content = <div className='content'>
       Loading...
     </div>
   } else if (getPostStatus === 'succeeded') {
-    content = posts.map((post) => 
+    content = filteredPosts.map((post) => 
       <BlogExcerpt key={post.id} postID={post.id} post={post}/>
     )
   } else if (getPostStatus === 'failed') {

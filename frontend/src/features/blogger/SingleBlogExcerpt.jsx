@@ -14,8 +14,13 @@ export const SingleBlogExcerpt = ({post}) => {
         
         <div className="post_content">
             <div className="post_header">
-                {post.title}
-                {post.id}
+                <div className="post_title">
+                    {post.title}
+                </div>
+                <div className="post_owner">
+                    {post.id}
+                </div>
+                
             </div>
             {post.descripts}
         </div>
