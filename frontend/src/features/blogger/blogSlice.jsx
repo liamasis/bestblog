@@ -1,40 +1,42 @@
 import axios from 'axios'
-import { createAsyncThunk, createSlice, isFulfilled } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
-const apiURL = "http://127.0.0.1:8000/blog/"
+const apiURL = 'http://127.0.0.1:8000/blog/'
 
 const initialState = {
-    post: [],
-    status: "idle",
-    error: null,
+  post: [],
+  status: 'idle',
+  error: null,
 }
 
 export const fetchPostById = createAsyncThunk(
-    'post/fetchPostById',
-    async (postID) => {
-        const response = await axios.get(`${apiURL}${postID.id}`)
-        console.log(response.data)
-        return response.data
-    }
+  'post/fetchPostById',
+
+  async (postID) => {
+    const response = await axios.get(`${apiURL}${postID.id}`)
+    console.log(response.data)
+    return response.data
+  }
 )
 
 const postSlice = createSlice({
-    name: 'post',
-    initialState,
-    reducers: {
-
-    },
-    extraReducers(builder){
-        builder.addCase(fetchPostById.pending, (state, action) => {
-            state.status = 'loading'
-        }).addCase(fetchPostById.fulfilled, (state, action) => {
-            state.status = 'succeeded'
-            state.post = action.payload
-        }).addCase(fetchPostById.rejected, (state, action) => {
-            state.status = 'failed'
-            state.post = action.error.message
-        })
-    }
+  name: 'post',
+  initialState,
+  reducers: {},
+  extraReducers(builder) {
+    builder
+      .addCase(fetchPostById.pending, (state) => {
+        state.status = 'loading'
+      })
+      .addCase(fetchPostById.fulfilled, (state, action) => {
+        state.status = 'succeeded'
+        state.post = action.payload
+      })
+      .addCase(fetchPostById.rejected, (state, action) => {
+        state.status = 'failed'
+        state.post = action.error.message
+      })
+  },
 })
 
 export const selectPost = (state) => state.post.post

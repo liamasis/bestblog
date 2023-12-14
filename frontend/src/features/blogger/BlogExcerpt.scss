@@ -1,40 +1,38 @@
 .blog-image {
-    object-fit: contain;
-    border-radius: 5px;
+  object-fit: contain;
+  border-radius: 5px;
 }
 
 .blog-text {
-    text-align: center;
+  text-align: center;
 }
 
 .blog {
-    display: flex-column;
-    justify-content: space-between;
+  display: flex-column;
+  justify-content: space-between;
 }
 
 .blog-container {
-
-    width: 100%;
-    padding: 1rem;
+  width: 100%;
+  padding: 1rem;
 }
 
 .blog-post-date {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .stamp {
-    display: flex;
-    justify-content: space-between;
-    
+  display: flex;
+  justify-content: space-between;
 }
 
 .svg_icons {
-    transform: scale(0.9);
-    padding: 3px;
+  transform: scale(0.9);
+  padding: 3px;
 }
 
 .button_container {
-    padding-top: 1rem;
+  padding-top: 1rem;
 }
