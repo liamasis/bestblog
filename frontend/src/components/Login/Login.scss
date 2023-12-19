@@ -44,3 +44,10 @@ input {
 }
 .register_link {
 }
+
+.error {
+  border: 1px solid red;
+  background-color: #ffecec;
+  color: #b00;
+  /* Other styles to indicate an error */
+}

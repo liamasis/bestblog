@@ -2,6 +2,8 @@ import { useState } from 'react'
 import './Login.scss'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import Alert from '@mui/icons-material/Alert'
+import Stack from '@mui/icons-material/Stack'
 
 const Login = () => {
   const [username, setUsername] = useState('')
@@ -25,7 +27,15 @@ const Login = () => {
     <div className="login_container">
       <div className="login_box">
         <h3 className="login_heading">LOGIN</h3>
-        <div className="something"></div>
+        <div className="something">
+          {errMsg && (
+            <div className="error">
+              <Stack>
+                <Alert severity="error">{errMsg}</Alert>
+              </Stack>
+            </div>
+          )}
+        </div>
         <form className="login_form" action="">
           <label>Username</label>
           <input
@@ -36,14 +46,20 @@ const Login = () => {
           />
           <label>Password</label>
           <input
-            type="text"
+            type={check ? 'text' : 'password'}
             required
             name="password"
             className="input_password"
           />
           <div className="">
             <label htmlFor="">show password</label>
-            <input type="checkbox" name="show_password" id="" />
+            <input
+              type="checkbox"
+              checked={check}
+              onChange={togglePasswordVisibility}
+              name="show_password"
+              id=""
+            />
           </div>
           <button className="login_button">Login</button>
         </form>
