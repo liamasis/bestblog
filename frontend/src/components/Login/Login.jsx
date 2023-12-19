@@ -2,8 +2,8 @@ import { useState } from 'react'
 import './Login.scss'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import Alert from '@mui/icons-material/Alert'
-import Stack from '@mui/icons-material/Stack'
+import Alert from '@mui/material/Alert'
+import Stack from '@mui/material/Stack'
 
 const Login = () => {
   const [username, setUsername] = useState('')
