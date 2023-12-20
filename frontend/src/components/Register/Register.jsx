@@ -46,7 +46,7 @@ const Register = () => {
           />
           <div className="">
             <label htmlFor="">Show Password</label>
-            <input type="checkbox" />
+            <input type="checkbox" onChange={togglePasswordVisibility} />
           </div>
           <button>Register</button>
         </form>
