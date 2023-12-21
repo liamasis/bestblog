@@ -11,7 +11,6 @@ const Register = () => {
   const handleUsernameInput = (e) => setUsername(e.target.value)
   const handlePasswordInput = (e) => setPassword(e.target.value)
   const handleConfirmPasswordInput = (e) => setConfirmPassword(e.target.value)
-
   const togglePasswordVisibility = () => {
     setCheck((prevState) => !prevState)
   }
