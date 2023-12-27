@@ -3,8 +3,10 @@ import './Register.scss'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import Alert from '@mui/material/Alert'
 import Stack from '@mui/material/Stack'
+import axios from 'axios'
 
 const Register = () => {
+  const navigate = useNavigate()
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -18,6 +20,32 @@ const Register = () => {
     setCheck((prevState) => !prevState)
   }
 
+  const apiUrl = 'http://127.0.0.1:8000/'
+
+  const handleSubmit = async (event) => {
+    event.preventDefault()
+
+    if (password != confirmPassword) {
+      setErrMsg('Passwords do not match.')
+      return
+    }
+
+    try {
+      await axios.post(`${apiUrl}user-registration/`, {
+        username: username,
+        password: password,
+      })
+      setUsername('')
+      setPassword('')
+      setConfirmPassword('')
+      setErrMsg('')
+      navigate('/login', {
+        state: { successMessage: 'Registration Successful. Please log in' },
+      })
+    } catch (error) {
+      setErrMsg(error.message.data)
+    }
+  }
   return (
     <div className="register_container">
       <div className="register_box">
@@ -31,7 +59,7 @@ const Register = () => {
             </Stack>
           </div>
         )}
-        <form className="register_form" action="">
+        <form onSubmit={handleSubmit} className="register_form" action="">
           <label htmlFor="">Username</label>
           <input type="text" required onChange={handleUsernameInput} />
           <label htmlFor="">Password</label>
