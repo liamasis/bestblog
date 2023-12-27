@@ -1,5 +1,8 @@
 import { useState } from 'react'
 import './Register.scss'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
+import Alert from '@mui/material/Alert'
+import Stack from '@mui/material/Stack'
 
 const Register = () => {
   const [username, setUsername] = useState('')
@@ -49,6 +52,12 @@ const Register = () => {
           </div>
           <button>Register</button>
         </form>
+        <p>
+          Already have an account?
+          <Link className="login_link" to="/login">
+            Login
+          </Link>
+        </p>
       </div>
     </div>
   )

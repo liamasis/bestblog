@@ -27,7 +27,7 @@ const Login = () => {
     <div className="login_container">
       <div className="login_box">
         <h3 className="login_heading">LOGIN</h3>
-        <div className="something">
+        <div className="">
           {errMsg && (
             <div className="error">
               <Stack>
