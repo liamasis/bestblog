@@ -17,14 +17,14 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         fields = "__all__"
 
-class UserRegSerializer(serializers.ModelSerializer):
+class UserRegSerializer(serializers.Serializer):
     username = serializers.CharField(max_length=150)
     password = serializers.CharField(max_length=100, write_only=True)
 
     def create(self, validated_data):
-        user = User.objects.create(
+        user = User.objects.create_user(
             username = validated_data['username'],
-            password = validated_data('password'),
+            password = validated_data['password'],
         )
 
         return user
